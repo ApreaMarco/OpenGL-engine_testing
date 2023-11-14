@@ -1,5 +1,5 @@
 # Vscode config
-.vscode
+.vscode/*
 
 # Executables
 bin/app.exe
