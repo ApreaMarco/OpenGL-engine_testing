@@ -19,7 +19,7 @@ on:
         type: string
 
 env:
-  shared_options: -lSDL2 -lassimp -lfreetype -lsndfile -I include -I src -I imgui
+  SHARED_OPTIONS: -lSDL2 -lassimp -lfreetype -lsndfile -I include -I src -I imgui
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,4 +32,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Compile unix
-      run: bash -c 'g++ -lopenal ${{ shared_options }} -L lib -o app.out src/*.* imgui/* src/compile/linux.cpp'
+      run: g++ -lopenal $SHARED_OPTIONS -L lib -o app.out src/*.* imgui/* src/compile/linux.cpp
