@@ -13,13 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    # - name: make unix
-    #   run: make unix
-    - name: Set up MinGW
-      uses: egor-tensin/setup-mingw@v2
-    - name: make windows
-      run: make windows
+    - uses: egor-tensin/setup-mingw@v2
+    
+    - name: build unix
+      run: make unix unix_build
     - name: build windows
-      run: make windows_build
+      run: make windows windows_build
     - name: clean
       run: make clean
