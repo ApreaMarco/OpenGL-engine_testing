@@ -1,2 +1,6 @@
 # Vscode config
 .vscode
+
+# Executables
+bin/*.exe
+app.out
