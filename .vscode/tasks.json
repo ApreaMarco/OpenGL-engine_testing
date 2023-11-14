@@ -2,11 +2,6 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "options": {
-        "env": {
-            "shared_options": "-lSDL2 -lassimp -lfreetype -lsndfile -I include -I src -I imgui"
-        }
-    },
     "tasks": [
         {
             "label": "Test",
@@ -19,7 +14,7 @@
         {
             "label": "unix-compile",
             "type": "shell",
-            "command": "bash -c 'g++ -lopenal ${shared_options} -L lib -o app.out src/*.* imgui/* src/compile/linux.cpp'",
+            "command": "bash -c 'make'",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -28,20 +23,17 @@
         {
             "label": "win-compile",
             "type": "shell",
-            "command": "bash -c 'x86_64-w64-mingw32-g++ -Wl,-subsystem,windows -static-libgcc -static-libstdc++ -lsoft_oal ${shared_options} -L bin -o bin/winApp.exe src/*.* imgui/* src/compile/windows.cpp'"
+            "command": "bash -c 'make windows'"
         },
         {
             "label": "win-build",
             "type": "shell",
-            "command": "utils/buildWindows.sh"
+            "command": "bash -c 'make windows_build'"
         },
         {
             "label": "win-build-and-compile",
             "type": "shell",
-            "command": "utils/buildWindows.sh",
-            "dependsOn": [
-                "win-compile"
-            ]
+            "command": "bash -c 'make windows windows_build && echo Done!'"
         }
     ]
 }
