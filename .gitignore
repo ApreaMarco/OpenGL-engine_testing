@@ -2,5 +2,8 @@
 .vscode
 
 # Executables
-bin/*.exe
+bin/app.exe
 app.out
+
+# Build dir
+build
