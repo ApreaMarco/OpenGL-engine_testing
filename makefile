@@ -1,9 +1,10 @@
 
-SHARED_OPTIONS = -lSDL2 -lassimp -lfreetype -lsndfile -I include -I src -I imgui
+INCLUDE_DIRECTORIES = -I include -I src -I imgui
+LINKED_LIBRARIES = -lSDL2 -lassimp -lfreetype -lsndfile
 
 unix:
 	@echo "Compiling for unix..."
-	g++ -lopenal $(SHARED_OPTIONS) -L lib -o app.out src/*.* imgui/* src/compile/linux.cpp
+	g++ imgui/* src/compile/linux.cpp $(INCLUDE_DIRECTORIES) -L lib $(LINKED_LIBRARIES) -lopenal -o app.out src/*.*
 
 unix_build:
 	@echo "Building for unix..."
@@ -13,7 +14,7 @@ unix_build:
 
 windows:
 	@echo "Compiling for windows..."
-	x86_64-w64-mingw32-g++ -Wl,-subsystem,windows -static-libgcc -static-libstdc++ -lsoft_oal $(SHARED_OPTIONS) -L bin -o bin/app.exe src/*.* imgui/* src/compile/windows.cpp
+	x86_64-w64-mingw32-g++ src/*.* imgui/* src/compile/windows.cpp -Wl,-subsystem,windows -static-libgcc -static-libstdc++ $(INCLUDE_DIRECTORIES) -L bin $(LINKED_LIBRARIES) -lsoft_oal -o bin/app.exe
 
 windows_build:
 	@echo "Building for windows..."
