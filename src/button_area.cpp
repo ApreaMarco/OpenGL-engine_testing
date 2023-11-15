@@ -21,6 +21,15 @@ void ButtonArea::HandleEvent(const SDL_Event* Event) {
 }
 
 
+void ButtonArea::SetHot(bool hot) {
+    this->Hot = hot;
+    this->HotCallback(hot);
+}
+
+void ButtonArea::Click() {
+    this->ClickCallback();
+}
+
 bool ButtonArea::IsWithinBounds(int x, int y) {
     if (x < this->Position.x) return false;
     if (x > this->Position.x + this->Size.x) return false;

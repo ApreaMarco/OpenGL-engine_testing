@@ -17,6 +17,8 @@ private:
 public:
     ButtonArea(glm::vec2 pos, glm::vec2 size, void(*hot_callback)(bool), void(*click_callback)());
     void HandleEvent(const SDL_Event* Event);
+    void SetHot(bool hot);
+    void Click();
 };
 
 
