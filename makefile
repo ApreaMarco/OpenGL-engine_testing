@@ -1,10 +1,10 @@
 
 INCLUDE_DIRECTORIES = -I include -I src -I imgui
-LINKED_LIBRARIES = -lbsd -lSDL2 -lassimp -lfreetype -lsndfile
+LINKED_LIBRARIES = -lSDL2 -lassimp -lfreetype -lsndfile
 
 unix:
 	@echo "Compiling for unix..."
-	g++ imgui/* src/compile/linux.cpp $(INCLUDE_DIRECTORIES) -L lib $(LINKED_LIBRARIES) -lopenal -o app.out src/*.*
+	g++ src/*.* imgui/* src/compile/linux.cpp -o app.out $(INCLUDE_DIRECTORIES) -L lib $(LINKED_LIBRARIES) -lopenal
 
 unix_build:
 	@echo "Building for unix..."
@@ -14,7 +14,7 @@ unix_build:
 
 windows:
 	@echo "Compiling for windows..."
-	x86_64-w64-mingw32-g++ src/*.* imgui/* src/compile/windows.cpp -Wl,-subsystem,windows -static-libgcc -static-libstdc++ $(INCLUDE_DIRECTORIES) -L bin $(LINKED_LIBRARIES) -lsoft_oal -o bin/app.exe
+	x86_64-w64-mingw32-g++ src/*.* imgui/* src/compile/windows.cpp -o bin/app.exe -Wl,-subsystem,windows -static-libgcc -static-libstdc++ $(INCLUDE_DIRECTORIES) -L bin $(LINKED_LIBRARIES) -lsoft_oal
 
 windows_build:
 	@echo "Building for windows..."
