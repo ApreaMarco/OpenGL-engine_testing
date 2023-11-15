@@ -1,6 +1,6 @@
 
 INCLUDE_DIRECTORIES = -I include -I src -I imgui
-LINKED_LIBRARIES = -lSDL2 -lglib-2.0 -lassimp -lfreetype
+LINKED_LIBRARIES = -lglib-2.0 -lSDL2 -lassimp -lfreetype
 
 unix:
 	@echo "Compiling for unix..."
