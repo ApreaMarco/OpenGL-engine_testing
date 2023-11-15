@@ -1,10 +1,10 @@
 
 INCLUDE_DIRECTORIES = -I include -I src -I imgui
-LINKED_LIBRARIES = -lglib-2.0 -lSDL2 -lassimp -lfreetype
+LINKED_LIBRARIES = -lSDL2 -lassimp -lfreetype
 
 unix:
 	@echo "Compiling for unix..."
-	g++ src/*.* imgui/* src/compile/linux.cpp -o app.out $(INCLUDE_DIRECTORIES) -L lib $(LINKED_LIBRARIES) -lopenal
+	g++ src/*.* imgui/* src/compile/linux.cpp -o app.out -Wl,-rpath,lib $(INCLUDE_DIRECTORIES) -L lib -lglib-2.0 $(LINKED_LIBRARIES) -lopenal
 
 unix_build:
 	@echo "Building for unix..."
