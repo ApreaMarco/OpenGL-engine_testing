@@ -4,7 +4,7 @@ LINKED_LIBRARIES = -lassimp -lfreetype
 
 unix:
 	@echo "Compiling for unix..."
-	g++ src/*.* imgui/* src/compile/linux.cpp -o app.out -Wall -g -lm -Wl,-rpath,lib $(INCLUDE_DIRECTORIES)  -L lib libSDL2main.a -lglib-2.0 $(LINKED_LIBRARIES) -lopenal
+	g++ src/*.* imgui/* src/compile/linux.cpp -o app.out -Wall -g -lm -Wl,-rpath,lib $(INCLUDE_DIRECTORIES)  -L lib lib/libSDL2main.a -lglib-2.0 $(LINKED_LIBRARIES) -lopenal
 
 unix_build:
 	@echo "Building for unix..."
